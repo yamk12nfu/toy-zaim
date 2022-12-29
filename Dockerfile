@@ -1,6 +1,16 @@
-FROM python:3.10-slim
+FROM golang:latest
 
-RUN pip install --upgrade pip
-WORKDIR /var/toy-zaim
+WORKDIR /app
+COPY ./app /app
 
-COPY requirements.txt /var/toy-zaim
+RUN go mod init main \
+  && go mod tidy \
+  && go build
+
+ENV CGO_ENABLED=0 \
+  GOOS=linux \
+  GOARCH=amd64
+EXPOSE 8080
+
+
+CMD ["go", "run", "main.go"]

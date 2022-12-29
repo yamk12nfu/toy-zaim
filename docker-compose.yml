@@ -1,10 +1,8 @@
 version: "3"
 services:
-  python3:
-    restart: always
+  api:
     build: .
-    container_name: "toy-zaim-python3"
-    working_dir: "/var/toy-zaim"
+    ports:
+      - "8080:8080"
+    working_dir: /app
     tty: true
-    volumes:
-      - ./app:/var/toy-zaim/app

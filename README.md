@@ -2,4 +2,4 @@
 
 1. `docker-compose build`
 2. `docker-compose up -d`
-3. `docker exec -it toy-zaim-python3 bash`
+3. `docker exec -it toy-zaim bash`
