@@ -5,8 +5,8 @@ import (
 )
 
 type ZaimData struct {
-	money      []gozaim.Money
-	categories []gozaim.Category
-	genres     []gozaim.Genre
-	accounts   []gozaim.Account
+	Money      []gozaim.Money
+	Categories []gozaim.Category
+	Genres     []gozaim.Genre
+	Accounts   []gozaim.Account
 }
