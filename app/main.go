@@ -5,6 +5,7 @@ import (
 
 	"github.com/yamk12nfu/toy-zaim/app/config"
 	"github.com/yamk12nfu/toy-zaim/app/interfaces/repository"
+	"github.com/yamk12nfu/toy-zaim/app/usecases/interactor"
 )
 
 func main() {
@@ -16,5 +17,8 @@ func main() {
 		fmt.Printf("実行に失敗しました")
 	}
 
-	fmt.Println(d)
+	data, sum := interactor.ConvertData(d)
+
+	fmt.Println(data)
+	fmt.Println("今月時点での出費の合計額:", sum, "円")
 }
