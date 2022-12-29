@@ -10,3 +10,19 @@ type ZaimData struct {
 	Genres     []gozaim.Genre
 	Accounts   []gozaim.Account
 }
+
+type MoneyJP struct {
+	Date         string
+	Mode         string
+	Category     string
+	Genre        string
+	// From         string
+	// To           string
+	// Name         string
+	// Comment      string
+	// Place        string
+	// CurrencyCode string
+	// Income       int
+	 Payment      int
+	// Transfer     int
+}
