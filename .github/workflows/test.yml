@@ -17,6 +17,5 @@ jobs:
         with:
           node-version: "18"
 
-      - run: cd notice
-      - run: pwd
+      - run: cd notice && pwd
       - run: npm run test:ci
