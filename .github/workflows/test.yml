@@ -17,5 +17,5 @@ jobs:
         with:
           node-version: "18"
 
+      - run: pwd
       - run: npm run test:ci
-      - working-directory: notice
