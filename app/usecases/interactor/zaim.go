@@ -3,7 +3,22 @@ package interactor
 import (
 	gozaim "github.com/s-sasaki-0529/go-zaim"
 	"github.com/yamk12nfu/toy-zaim/app/domain/entities"
+	"github.com/yamk12nfu/toy-zaim/app/usecases/port"
 )
+
+type ZaimInteractor struct {
+	ZaimService port.ZaimService
+}
+
+func (i *ZaimInteractor) Sum()(int, error){
+	data, err := i.ZaimService.GetZaimData()
+	if err != nil {
+		return -1, err
+	}
+
+	_, s := ConvertData(data)
+	return s, nil
+}
 
 func ConvertData(data entities.ZaimData) ([]entities.MoneyJP, int) {
 	sum := 0
