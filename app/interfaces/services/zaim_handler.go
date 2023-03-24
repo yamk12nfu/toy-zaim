@@ -1,7 +1,8 @@
-package port
+package services
 
 import "github.com/yamk12nfu/toy-zaim/app/domain/entities"
 
-type ZaimService interface {
+type ZaimHandler interface {
+	GetMoneyData() ([]int64, error)
 	GetZaimData() (entities.ZaimData, error)
 }
