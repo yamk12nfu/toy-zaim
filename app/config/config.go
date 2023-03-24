@@ -1,26 +1,37 @@
 package config
 
 import (
-	"fmt"
-	"os"
-
-	gozaim "github.com/s-sasaki-0529/go-zaim"
-
-	"github.com/joho/godotenv"
+	"github.com/spf13/viper"
 )
 
-func GetClient() (*gozaim.Client) {
-	err := godotenv.Load(".env")
+type Config struct {
+	Zaim Zaim `yaml:"zaim"`
+}
+
+type Zaim struct {
+	ConsumerKey string `yaml:"consumerKey"`
+	ConsumerSecret string `yaml:"consumerSecret"`
+	AccessToken string `yaml:"accessToken"`
+	AccessSecret string `yaml:"accessSecret"`
+}
+
+var Conf = NewConfig()
+
+func NewConfig() Config {
+	viper.SetConfigName("config")
+  viper.SetConfigType("yaml")
+  viper.AddConfigPath("config/")
+
+	err := viper.ReadInConfig()
 	if err != nil {
-		fmt.Printf("読み込みに失敗しました: %v", err)
+		panic(err)
 	}
 
-	c := gozaim.NewClient(
-		os.Getenv("CONSUMER_KEY"),
-		os.Getenv("CONSUMER_SECRET"),
-		os.Getenv("ACCESS_TOKEN"),
-		os.Getenv("ACCESS_SECRET"),
-	)
+	var config Config
+	err = viper.Unmarshal(&config)
+	if err != nil {
+		panic(err)
+	}
 
-	return c
+	return config
 }
