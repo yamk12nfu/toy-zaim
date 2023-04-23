@@ -12,10 +12,10 @@ type ZaimData struct {
 }
 
 type MoneyJP struct {
-	Date         string
-	Mode         string
-	Category     string
-	Genre        string
+	Date     string
+	Mode     string
+	Category string
+	Genre    string
 	// From         string
 	// To           string
 	// Name         string
@@ -23,6 +23,6 @@ type MoneyJP struct {
 	// Place        string
 	// CurrencyCode string
 	// Income       int
-	 Payment      int
+	Payment int
 	// Transfer     int
 }

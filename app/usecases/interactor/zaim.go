@@ -10,7 +10,7 @@ type ZaimInteractor struct {
 	ZaimService port.ZaimService
 }
 
-func (i *ZaimInteractor) Sum()(int, error){
+func (i *ZaimInteractor) Sum() (int, error) {
 	data, err := i.ZaimService.GetZaimData()
 	if err != nil {
 		return -1, err
@@ -26,11 +26,11 @@ func ConvertData(data entities.ZaimData) ([]entities.MoneyJP, int) {
 	for _, v := range data.Money {
 		pay, _, _ := GetAmount(v.Mode, v.Amount)
 		cm := entities.MoneyJP{
-			Date: v.Date,
-			Mode: ConvertMode(v.Mode),
+			Date:     v.Date,
+			Mode:     ConvertMode(v.Mode),
 			Category: GetCategoryName(v.CategoryID, data.Categories),
-			Genre: GetGenreName(v.GenreID, data.Genres),
-			Payment: pay,
+			Genre:    GetGenreName(v.GenreID, data.Genres),
+			Payment:  pay,
 		}
 		sum += pay
 
@@ -40,7 +40,7 @@ func ConvertData(data entities.ZaimData) ([]entities.MoneyJP, int) {
 	return money, sum
 }
 
-func GetCategoryName(categoryID int, categories []gozaim.Category) string{
+func GetCategoryName(categoryID int, categories []gozaim.Category) string {
 	for _, v := range categories {
 		if v.ID == categoryID {
 			return v.Name
@@ -49,7 +49,7 @@ func GetCategoryName(categoryID int, categories []gozaim.Category) string{
 	return ""
 }
 
-func GetGenreName(genreID int, genres []gozaim.Genre) string{
+func GetGenreName(genreID int, genres []gozaim.Genre) string {
 	for _, v := range genres {
 		if v.ID == genreID {
 			return v.Name

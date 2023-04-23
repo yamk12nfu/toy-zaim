@@ -19,6 +19,6 @@ func NewZaimController(zaimHandler services.ZaimHandler) *ZaimController {
 	}
 }
 
-func (c *ZaimController)Sum() (int, error) {
+func (c *ZaimController) Sum() (int, error) {
 	return c.Interactor.Sum()
 }
