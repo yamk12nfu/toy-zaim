@@ -9,18 +9,18 @@ type Config struct {
 }
 
 type Zaim struct {
-	ConsumerKey string `yaml:"consumerKey"`
+	ConsumerKey    string `yaml:"consumerKey"`
 	ConsumerSecret string `yaml:"consumerSecret"`
-	AccessToken string `yaml:"accessToken"`
-	AccessSecret string `yaml:"accessSecret"`
+	AccessToken    string `yaml:"accessToken"`
+	AccessSecret   string `yaml:"accessSecret"`
 }
 
 var Conf = NewConfig()
 
 func NewConfig() Config {
 	viper.SetConfigName("config")
-  viper.SetConfigType("yaml")
-  viper.AddConfigPath("config/")
+	viper.SetConfigType("yaml")
+	viper.AddConfigPath("config/")
 
 	err := viper.ReadInConfig()
 	if err != nil {
