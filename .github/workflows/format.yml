@@ -1,14 +1,17 @@
 name: Format code
 on:
   push:
-    branches: [main]
   pull_request:
-    branches: [main]
+
+env:
+  FILE_PATTERN: .go
 jobs:
   format:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.head_ref }}
       - name: set up go
         uses: actions/setup-go@v2
         with:
@@ -17,10 +20,10 @@ jobs:
         run: go install golang.org/x/tools/cmd/goimports@latest
       - name: Format code
         run: goimports -w .
-      - name: Commit and push changes
-        run: |
-          git config --global user.name "github-actions"
-          git config --global user.email "fuyafuya1224@gmail.com"
-          git commit -a -m "Auto-format code"
-          git pull origin HEAD:${{ github.head_ref }}
-          git push origin HEAD:${{ github.head_ref }}
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Format code
+          commit_options: "--no-verify --signoff"
+          commit_user_name: ${{ github.actor }}
+          commit_user_email: ${{ github.actor }}@users.noreply.github.com
+          file_pattern: ${{ env.FILE_PATTERN }}
