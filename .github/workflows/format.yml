@@ -1,11 +1,8 @@
 name: Format code
 on:
-  push:
   pull_request:
     types: [opened, synchronize, reopened]
 
-env:
-  FILE_PATTERN: .go
 jobs:
   formatter:
     name: formatter
