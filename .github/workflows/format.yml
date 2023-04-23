@@ -22,4 +22,4 @@ jobs:
           git config --global user.name "github-actions"
           git config --global user.email "fuyafuya1224@gmail.com"
           git commit -a -m "Auto-format code"
-          git push origin HEAD
+          git push origin HEAD:${{ github.head_ref }}
