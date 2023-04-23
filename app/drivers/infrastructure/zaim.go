@@ -31,8 +31,8 @@ type zaimHandler struct {
 	client *gozaim.Client
 }
 
-func(h *zaimHandler) GetZaimData() (entities.ZaimData, error) {
-// データ一覧の取得
+func (h *zaimHandler) GetZaimData() (entities.ZaimData, error) {
+	// データ一覧の取得
 	money, err := h.client.FetchMoney(url.Values{})
 	if err != nil {
 		fmt.Println("Failed to get money", err)
@@ -64,17 +64,17 @@ func(h *zaimHandler) GetZaimData() (entities.ZaimData, error) {
 	}
 
 	result := entities.ZaimData{
-		Money: money,
+		Money:      money,
 		Categories: category,
-		Genres: genre,
-		Accounts: account,
+		Genres:     genre,
+		Accounts:   account,
 	}
 
 	return result, nil
 }
 
-func(h *zaimHandler) GetMoneyData() (money []int64, err error) {
-// データ一覧の取得
+func (h *zaimHandler) GetMoneyData() (money []int64, err error) {
+	// データ一覧の取得
 	moneyData, err := h.client.FetchMoney(url.Values{})
 	if err != nil {
 		fmt.Println("Failed to get money", err)
