@@ -1,4 +1,4 @@
-package handler
+package controllers
 
 import (
 	"github.com/yamk12nfu/toy-zaim/app/interfaces/services"

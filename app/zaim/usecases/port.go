@@ -1,4 +1,4 @@
-package port
+package usecases
 
 import "github.com/yamk12nfu/toy-zaim/app/domain/entities"
 

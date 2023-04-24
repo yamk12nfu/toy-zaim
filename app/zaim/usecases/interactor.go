@@ -1,4 +1,4 @@
-package interactor
+package usecases
 
 import (
 	gozaim "github.com/s-sasaki-0529/go-zaim"
