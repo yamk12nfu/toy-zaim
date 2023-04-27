@@ -5,8 +5,8 @@ import "github.com/labstack/echo/v4"
 func httpErrorHandler(err error, c echo.Context) {
 	status := getErrorStatus(err)
 	body := map[string]any{
-		"status":  status,
-		"error": err.Error(),
+		"status": status,
+		"error":  err.Error(),
 	}
 
 	if err := c.JSON(status, body); err != nil {

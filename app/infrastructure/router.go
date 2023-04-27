@@ -24,7 +24,7 @@ func NewRouter() *Router {
 }
 
 type Router struct {
-	Echo *echo.Echo
+	Echo      *echo.Echo
 	closables []closable
 }
 

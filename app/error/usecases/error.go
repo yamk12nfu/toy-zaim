@@ -3,6 +3,6 @@ package usecases
 type ErrorType uint
 
 type errorProps struct {
-	t ErrorType
+	t      ErrorType
 	status int
 }

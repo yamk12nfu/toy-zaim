@@ -6,7 +6,7 @@ type WaitGroup struct {
 	wg sync.WaitGroup
 }
 
-func (wg *WaitGroup) Go(fn func()){
+func (wg *WaitGroup) Go(fn func()) {
 	wg.wg.Add(1)
 	go func() {
 		defer wg.wg.Done()
@@ -14,6 +14,6 @@ func (wg *WaitGroup) Go(fn func()){
 	}()
 }
 
-func (wg *WaitGroup) Wait(){
+func (wg *WaitGroup) Wait() {
 	wg.wg.Wait()
 }
